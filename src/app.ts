@@ -1,26 +1,28 @@
 import express, { Request, Response } from 'express';
 import { exec } from 'child_process';
-import { keyboard, Key } from '@nut-tree/nut-js';
+import { keyboard, Key } from '@nut-tree-fork/nut-js';
 
 const app = express();
 
 const sendTextToTerminal = async (text: string, interval: number) => {
-  // Задержка перед отправкой текста
   await new Promise(resolve => setTimeout(resolve, interval));
-  for (let i = 0; i < 10; i++) { // Отправляем текст 10 раз
+  for (let i = 0; i < 10; i++) {
     await keyboard.type(text); // Печатаем текст
-    await keyboard.pressKey(Key.Enter); // Нажимаем Enter
-    await new Promise(resolve => setTimeout(resolve, 1000)); // Ждем 1 секунду перед следующей отправкой
+    await keyboard.pressKey(Key.Enter); // Отправляем текст с Enter
+    await new Promise(resolve => setTimeout(resolve, 1000)); // Задержка 1 сек
   }
 };
 
-// Open a new terminal
+// Открываем новый терминал и делаем его активным
 app.get('/open-terminal', (req: Request, res: Response) => {
-  exec('start cmd', (err, stdout, stderr) => {
+  exec('start cmd', async (err, stdout, stderr) => {
     if (err) {
       return res.status(500).send('Error opening terminal');
     }
-    res.send('Terminal opened');
+
+    res.send('Terminal openeds');
+    await new Promise(resolve => setTimeout(resolve, 2000));
+    sendTextToTerminal('Lorem', 1000); // Пример отправки текста с задержкой
   });
 });
 
