@@ -2,8 +2,8 @@
   "name": "remotestart",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/app.js",
-  "bin": "dist/app.js",
+  "main": "src/app.js",
+  "bin": "src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node-dev --respawn src/app.ts",
@@ -14,9 +14,7 @@
   "license": "ISC",
   "dependencies": {
     "@nut-tree-fork/nut-js": "^4.2.2",
-    "expo-modules-core": "^1.12.24",
-    "express": "^4.21.0",
-    "nexe": "^4.0.0-rc.6"
+    "express": "^4.21.0"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",
@@ -30,6 +28,5 @@
     "assets": [
       "temp_script.bat"
     ]
-    
   }
 }
