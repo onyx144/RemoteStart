@@ -19,7 +19,7 @@ const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const os = require('os');
 const app = (0, express_1.default)();
-function startUrl(url) {
+function startUrl(url) {//Function from url open
     return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
         (0, child_process_1.exec)(`start chrome ${url}`, (err, stdout, stderr) => __awaiter(this, void 0, void 0, function* () {
             if (err) {
