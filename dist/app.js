@@ -38,6 +38,7 @@ function startUrl(url) {//Function from url open
         }));
     }));
 }
+//Open url and terminal
 app.get('/open-terminal', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     const url = req.query.url || 'https://nesmeyanov.pro/birtsdate.html'; // Значение URL из запроса или дефолтное значение
     const message = req.query.message || 'Happy Birthday';
